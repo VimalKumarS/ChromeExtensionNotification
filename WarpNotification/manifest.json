@@ -1,0 +1,58 @@
+{
+	"manifest_version": 2,
+	"name": "Warp Notification",
+	"description": "Push task notification",
+	"version": "1.0",
+	"browser_action": {
+		"default_icon": "tesla_16.png",
+		"default_popup": "popup.html"
+	},
+	"background": {
+		"scripts": [
+			"jquery.js",
+			//"eventPage.js",
+			"warpeventpage.js",
+			"socket.io.js"
+		],
+		"persistent": true
+	},
+	"web_accessible_resources": [
+		"tesla_128.png"
+	],
+	"icons": {
+		"16": "tesla_16.png",
+		"48": "tesla_48.png",
+		"128": "tesla_128.png"
+	},
+	"content_scripts": [
+		{
+			"matches": [
+				"https://14ce1a7b.ngrok.io/*",
+				"http://localhost:3000/*"
+			],
+			"js": [
+				"jquery.js",
+				"content.js",
+				"socket.io.js"
+			]
+		}
+	],
+	"permissions": [
+		"tabs",
+		"storage",
+		"notifications",
+		"cookies",
+		"https://14ce1a7b.ngrok.io/*",
+		"http://localhost:3000/*",
+		"http://*/*",
+		"https://*/*"
+	],
+	"browser_action": {
+		"default_icon": {
+			"16": "tesla_16.png",
+			"48": "tesla_48.png",
+			"128": "tesla_128.png"
+		},
+		"default_title": "__MSG_title__"
+	}
+}
